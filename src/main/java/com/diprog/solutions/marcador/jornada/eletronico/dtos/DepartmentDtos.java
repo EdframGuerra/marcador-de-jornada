@@ -1,25 +1,15 @@
-package com.diprog.solutions.marcador.jornada.eletronico.models;
+package com.diprog.solutions.marcador.jornada.eletronico.dtos;
 
-import jakarta.persistence.*;
 
-import java.io.Serializable;
+public class DepartmentDtos {
 
-@Entity
-@Table
-public class Department implements Serializable {
-
-    private static final Long serialVersionUID=1L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     private String name;
     private String descircao;
 
-    public Department() {
+    public DepartmentDtos() {
     }
 
-    public Department(String name, String descircao) {
+    public DepartmentDtos(String name, String descircao) {
         this.name = name;
         this.descircao = descircao;
     }
