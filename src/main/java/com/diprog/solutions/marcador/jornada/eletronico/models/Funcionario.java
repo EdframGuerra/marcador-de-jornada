@@ -1,13 +1,11 @@
 package com.diprog.solutions.marcador.jornada.eletronico.models;
 
-
 import jakarta.persistence.*;
-
 import java.io.Serializable;
 
 @Entity
 @Table
-public class Funcionarios implements Serializable {
+public class Funcionario implements Serializable {
 
     private static final Long serialVersionUID=1l;
     @Id
@@ -19,10 +17,10 @@ public class Funcionarios implements Serializable {
     private Integer cpf;
     private String senha;
 
-    public Funcionarios() {
+    public Funcionario() {
     }
 
-    public Funcionarios(String name, String position, String department, Integer cpf, String senha) {
+    public Funcionario(String name, String position, String department, Integer cpf, String senha) {
         this.name = name;
         this.position = position;
         this.department = department;
