@@ -4,30 +4,36 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table
+@Table(name="funcionario")
 public class Funcionario implements Serializable {
 
-    private static final Long serialVersionUID=1l;
+    private static final long serialVersionUID=1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String position;
-    private String department;
-    private Integer cpf;
+
+    @ManyToOne
+    @JoinColumn(name = "position_id", referencedColumnName = "id")
+    private Position position;
+
+    @ManyToOne
+    @JoinColumn(name = "department_id", referencedColumnName = "id")
+    private Department department;
+
+    private String cpf;
     private String senha;
 
     public Funcionario() {
     }
 
-    public Funcionario(String name, String position, String department, Integer cpf, String senha) {
+    public Funcionario(String name, Position position, Department department, String cpf, String senha) {
         this.name = name;
         this.position = position;
         this.department = department;
         this.cpf = cpf;
         this.senha = senha;
     }
-
     public Long getId() {
         return id;
     }
@@ -36,43 +42,39 @@ public class Funcionario implements Serializable {
         return name;
     }
 
-    public String getPosition() {
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Position getPosition() {
         return position;
     }
 
-    public String getDepartment() {
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
+    public Department getDepartment() {
         return department;
     }
 
-    public Integer getCpf() {
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public String getCpf() {
         return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getSenha() {
         return senha;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setPosition(String position) {
-        this.position = position;
-    }
-
-    public void setDepartment(String department) {
-        this.department = department;
-    }
-
-    public void setCpf(Integer cpf) {
-        this.cpf = cpf;
-    }
-
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    public void registrarPonto(){
-        //construir o metodo apos a criação da classe
     }
 }
